@@ -26,6 +26,9 @@ define(["./d3.min", "./d3.layout.cloud", "css!./WordCloud.css"],
             min: 1,
             max: 1
           },
+          sorting: {
+						uses: "sorting"
+					},
           settings: {
             uses: "settings"
           }
@@ -53,7 +56,7 @@ define(["./d3.min", "./d3.layout.cloud", "css!./WordCloud.css"],
 
         var div = document.getElementById(id);
 
-        var fill = d3.scale.category20b();
+        var fill = d3.scale.category10();
 
         var w = width,
           h = height;
@@ -73,11 +76,12 @@ define(["./d3.min", "./d3.layout.cloud", "css!./WordCloud.css"],
 						});
         
         //fin données
+ //                 console.log(layout.qHyperCube.qDataPages[0].qMatrix);
         
         var from = 0;
         var to = 0;
         
-        var rotateScale = d3.scale.linear().domain([0, 3]).range([from, to]);
+        var rotateScale = d3.scale.linear().domain([0, 2]).range([from, to]);
         
         var layout = d3.layout.cloud()
           .timeInterval(Infinity)
@@ -89,7 +93,7 @@ define(["./d3.min", "./d3.layout.cloud", "css!./WordCloud.css"],
             return d.key;
           })
           .rotate(function() {
-            return rotateScale(~~(Math.random() * 3));
+            return rotateScale(~~(Math.random() * 2));
           })
           .on("end", draw);
 
