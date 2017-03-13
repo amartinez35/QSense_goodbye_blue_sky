@@ -1,0 +1,13 @@
+{
+  "name" : "Image",
+  "description" : "Image object for Qlik Sense",
+  "icon" : "text-image",
+  "type" : "visualization",
+  "version": "0.9.1",
+  "author": "Excelcio",
+  "homepage" : "http://excelcio.com/",
+  "keywords" : "qlik-sense, visualization",
+  "preview" : "Excelcio.png",
+  "license" : "",
+  "dependencies" : { "qlik-sense" : ">=3.1.x" }
+}
