@@ -117,11 +117,14 @@ define(["./d3.min", "./d3.layout.cloud", "css!./WordCloud.css"],
             w / Math.abs(bounds[0].x - w / 2),
             h / Math.abs(bounds[1].y - h / 2),
             h / Math.abs(bounds[0].y - h / 2)) / 2 : 1;
-
+          
           var text = vis.selectAll("text")
             .data(data, function(d) {
-              return d.text.toLowerCase();
+              if(d.text != undefined){
+                return d.text.toLowerCase()
+              };
             });
+
           text.transition()
             .duration(1000)
             .attr("transform", function(d) {
@@ -146,7 +149,10 @@ define(["./d3.min", "./d3.layout.cloud", "css!./WordCloud.css"],
               return d.font;
             })
             .style("fill", function(d) {
-              return fill(d.text.toLowerCase());
+                if(d.text !== undefined){
+                  return fill(d.text.toLowerCase());
+                };
+              
             })
             .text(function(d) {
               return d.text;
